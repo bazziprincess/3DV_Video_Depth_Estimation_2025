@@ -36,36 +36,54 @@ os.remove(depth_annotated_dir)
 # Download calibration data for different dates
 raw_kitti_dir = os.path.join(save_dir, 'raw_kitti')
 
-for calib in  calib_files:
+for calib in calib_files:
     calib_url = base_url + 'raw_data/' + calib
-    calib_save_dir = os.path.join(raw_kitti_dir, calib)
-    download_url(calib_url, save_path=calib_save_dir, desc=f'Downloading {calib}')
-    with zipfile.ZipFile(os.path.join(raw_kitti_dir, calib), 'r') as zip_ref:
-        zip_ref.extractall(calib_save_dir.replace('.zip', ''))
-    os.remove(calib_save_dir)
+    calib_save_path = os.path.join(raw_kitti_dir, calib)
+    calib_extract_path = calib_save_path.replace('.zip', '')
+    
+    download_url(calib_url, save_path=calib_save_path, desc=f'Downloading {calib}')
+    with zipfile.ZipFile(calib_save_path, 'r') as zip_ref:
+        zip_ref.extractall(calib_extract_path)
+    os.remove(calib_save_path)
+    
+    # 移动标定文件到 raw_kitti/<date>/
+    date = calib.replace('_calib.zip', '')  # e.g. 2011_09_26
+    source_dir = os.path.join(calib_extract_path, date)
+    target_dir = os.path.join(raw_kitti_dir, date)
+    os.makedirs(target_dir, exist_ok=True)
+    
+    for filename in ["calib_cam_to_cam.txt", "calib_imu_to_velo.txt", "calib_velo_to_cam.txt"]:
+        src = os.path.join(source_dir, filename)
+        dst = os.path.join(target_dir, filename)
+        if os.path.exists(src):
+            os.rename(src, dst)
 
 # Download KITTI raw data sequences
 sequences = {}
 for split in ['train', 'val']:
-    split_dir = os.path.join(depth_annotated_dir.replace('.zip', ''), split)
+    split_dir = os.path.join(save_dir, 'data_depth_annotated', split)
     sequences[split] = natsorted(os.listdir(split_dir))
 
-total_sequence_num = len(sequences['train']) + len(sequences['val'])
+all_sequences = sequences['train'] + sequences['val']
+#for test
+#all_sequences = [s + "_sync" for s in test_sequences]
+total_sequence_num = len(all_sequences)
 num = 1
 
-for key, items in sequences.items():
-    for item in items:
-        print(f'Download Sequence {item}: {num}/{total_sequence_num}')
-        sequence_url = base_url + 'raw_data/' + item.replace('_sync', '') + '/' + item + '.zip'
-        if item.replace('_sync', '') in test_sequences:
-            sequence_save_dir = os.path.join(raw_kitti_dir, 'test', item + '.zip')
-        else:
-            sequence_save_dir = os.path.join(raw_kitti_dir, split, item + '.zip')
-        download_url(sequence_url, save_path=sequence_save_dir, desc=f'Downloading {item}')
+for item in all_sequences:
+    print(f'Download Sequence {item}: {num}/{total_sequence_num}')
+    date = item.split('_drive_')[0]
+    drive_name = item.replace('_sync', '')
+    zip_name = f"{item}.zip"
+    sequence_url = base_url + f"raw_data/{drive_name}/{zip_name}"
 
-        with zipfile.ZipFile(os.path.join(sequence_save_dir), 'r') as zip_ref:
-            zip_ref.extractall(sequence_save_dir.replace('.zip', ''))
-        os.remove(sequence_save_dir)
-        num += 1
+    zip_path = os.path.join(raw_kitti_dir, zip_name)
+    download_url(sequence_url, save_path=zip_path, desc=f'Downloading {item}')
+
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(raw_kitti_dir) 
+
+    os.remove(zip_path)
+    num += 1
 
     print('Download KITTI Depth Done')
