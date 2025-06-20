@@ -13,9 +13,9 @@
 
 ---
 
-## Overview
+## Abstract
 
-**VDE** is a video-oriented stereo depth estimation model designed for temporally consistent and scale-aware depth prediction. Unlike monocular methods, our model leverages stereo frames and temporal priors to produce **robust, zero-shot depth maps** with strong spatiotemporal coherence.
+Depth estimation has long been a fundamental problem in computer vision, with numerous monocular and stereo-based methods successfully applied in fields such as robotics and autonomous driving. While monocular depth estimation methods have achieved impressive results on various real-world image and video datasets, their lack of absolute scale information continues to limit their practical use. In contrast, stereo-based approaches can readily produce depth maps with scale information. However, when applied to consecutive video frames, these methods often suffer from poor temporal consistency. To address this challenge, we propose a stereo-based model tailored for video data, offering strong zero-shot inference capabilities and robust temporal coherence. The model does not require full retraining; fine-tuning on a small dataset is sufficient to significantly enhance spatiotemporal consistency. Our experiments on the Sintel dataset demonstrate the effectiveness of the proposed approach.
 
 <p align="center">
   <img src="preview_image.png" width="100%">
