@@ -35,4 +35,10 @@ conda create -n vde python=3.8
 conda activate vde
 pip install -r requirements.txt
 
+
 ###  Training
+
+```bash
+bash Train_our_model.sh
+
+To resume training:
