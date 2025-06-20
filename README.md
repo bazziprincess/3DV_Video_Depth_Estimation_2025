@@ -1,24 +1,36 @@
-# VDE: Video Depth Estimation
+<div align="center">
+  <h1>VDE: Video Depth Estimation</h1>
 
-This repository contains the official implementation of **VDE**, a stereo-based model for video depth estimation. Our method improves spatiotemporal consistency and supports zero-shot inference without full retraining.
+  <a href="#"><img src="https://img.shields.io/badge/Paper-ComingSoon-lightgrey" alt="Paper PDF"></a>
+  <a href="https://github.com/yixin-zhou/3DV_Video_Depth_Estimation_2025"><img src="https://img.shields.io/badge/Code-GitHub-green" alt="GitHub Code"></a>
+  <a href="https://bazziprincess.github.io/3DV_Video_Depth_Estimation_2025/"><img src="https://img.shields.io/badge/Project_Page-Live-blue" alt="Project Page"></a>
+  <a href="https://docs.google.com/presentation/d/e/2PACX-1vSpqnjFj72oaubtUzlmMZMxKtOtmZ8zasNSsMiVIkfq71dh14kQmlivHQIKifhmGQ/pub?start=false&loop=false&delayms=3000"><img src="https://img.shields.io/badge/Poster-GoogleSlides-orange" alt="Poster"></a>
 
-![teaser](preview_image.png)
-
-## 🔗 Project Page
-👉 Visit our GitHub Pages site here: [Project Website](https://bazziprincess.github.io/3DV_Video_Depth_Estimation_2025/)
+  <br><br>
+  <strong>Qinrui Deng, Tong Su, Hepeng Fan, Yixin Zhou</strong><br>
+  <em>ETH Zurich</em>
+</div>
 
 ---
 
-## 📄 Paper
-[Coming Soon]
+## Overview
 
-## 🖼 Poster
-[Poster (Google Slides)](https://docs.google.com/presentation/d/e/2PACX-1vSpqnjFj72oaubtUzlmMZMxKtOtmZ8zasNSsMiVIkfq71dh14kQmlivHQIKifhmGQ/pub?start=false&loop=false&delayms=3000)
+**VDE** is a video-oriented stereo depth estimation model designed for temporally consistent and scale-aware depth prediction. Unlike monocular methods, our model leverages stereo frames and temporal priors to produce **robust, zero-shot depth maps** with strong spatiotemporal coherence.
 
-## 💻 Code
+<p align="center">
+  <img src="preview_image.png" width="100%">
+</p>
 
-### Setup
+---
+
+
+## Quick Start
+
+### 🔧 Setup
+
 ```bash
+git clone https://github.com/yixin-zhou/3DV_Video_Depth_Estimation_2025.git
+cd 3DV_Video_Depth_Estimation_2025
 conda create -n vde python=3.8
 conda activate vde
 pip install -r requirements.txt
