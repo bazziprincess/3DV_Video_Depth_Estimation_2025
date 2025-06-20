@@ -66,16 +66,13 @@
 
   <div class="preview">
     <p>Video Preview</p>
-    <img src="example.jpg" width="400" alt="Preview image">
+    <img src="preview_image.png" width="400" alt="Preview image">
   </div>
 
   <div class="abstract">
     <h2>Abstract</h2>
     <p>
-      We present VDE, a novel architecture for monocular and stereo-based video depth estimation. 
-      Our method leverages temporal consistency and spatial cues across frames to recover accurate 
-      and dense depth maps from video sequences. With a modular pipeline and attention-based refinement, 
-      VDE achieves competitive performance on multiple datasets while maintaining real-time inference capability.
+      Depth estimation has long been a fundamental problem in computer vision, with numerous monocular and stereo-based methods successfully applied in fields such as robotics and autonomous driving. While monocular depth estimation methods have achieved impressive results on various real-world image and video datasets, their lack of absolute scale information continues to limit their practical use. In contrast, stereo-based approaches can readily produce depth maps with scale information. However, when applied to consecutive video frames, these methods often suffer from poor temporal consistency. To address this challenge, we propose a stereo-based model tailored for video data, offering strong zero-shot inference capabilities and robust temporal coherence. The model does not require full retraining; fine-tuning on a small dataset is sufficient to significantly enhance spatiotemporal consistency. Our experiments on the Sintel dataset demonstrate the effectiveness of the proposed approach.
     </p>
   </div>
 </body>
