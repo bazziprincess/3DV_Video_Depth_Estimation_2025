@@ -38,7 +38,12 @@ pip install -r requirements.txt
 
 ###  Training
 
-```bash
 bash Train_our_model.sh
 
-To resume training:
+### To resume training:
+
+bash resume_training_from_best.sh
+
+### Inference
+
+python train_with_dynamic_replica.py
