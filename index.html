@@ -38,11 +38,7 @@
       border-radius: 20px;
       text-decoration: none;
     }
-    .preview {
-      text-align: center;
-      margin: 2em 0;
-    }
-    .abstract {
+    .section {
       margin-top: 3em;
     }
     .acknowledgements {
@@ -66,15 +62,18 @@
     <a href="https://docs.google.com/presentation/d/e/2PACX-1vSpqnjFj72oaubtUzlmMZMxKtOtmZ8zasNSsMiVIkfq71dh14kQmlivHQIKifhmGQ/pub?start=false&loop=false&delayms=3000" class="button">🖼 Poster</a>
   </div>
 
-  <div class="preview">
-    <p><strong>Model Architecture</strong></p>
-    <img src="preview_image.png" style="width: 100%;" alt="Preview image">
-  </div>
-
-  <div class="abstract">
+  <div class="section">
     <h2>Abstract</h2>
     <p>
       Depth estimation has long been a fundamental problem in computer vision, with numerous monocular and stereo-based methods successfully applied in fields such as robotics and autonomous driving. While monocular depth estimation methods have achieved impressive results on various real-world image and video datasets, their lack of absolute scale information continues to limit their practical use. In contrast, stereo-based approaches can readily produce depth maps with scale information. However, when applied to consecutive video frames, these methods often suffer from poor temporal consistency. To address this challenge, we propose a stereo-based model tailored for video data, offering strong zero-shot inference capabilities and robust temporal coherence. The model does not require full retraining; fine-tuning on a small dataset is sufficient to significantly enhance spatiotemporal consistency. Our experiments on the Sintel dataset demonstrate the effectiveness of the proposed approach.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Methods</h2>
+    <img src="preview_image.png" style="width: 100%;" alt="Model architecture">
+    <p>
+      As shown in the figure above, our method integrates monocular priors from a video depth foundation model with stereo matching features. A 3D GRU-based refinement module and temporal upsampling ensure coherent depth predictions across frames. This hybrid approach enables both metric accuracy and temporal stability in dynamic scenes.
     </p>
   </div>
 
