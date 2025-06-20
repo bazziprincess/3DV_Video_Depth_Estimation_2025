@@ -51,5 +51,5 @@ bash resume_training_from_best.sh
 ### Inference
 
 ```bash
-python train_with_dynamic_replica.py
+
 ```
