@@ -34,16 +34,22 @@ cd 3DV_Video_Depth_Estimation_2025
 conda create -n vde python=3.8
 conda activate vde
 pip install -r requirements.txt
-
+```
 
 ###  Training
 
+```bash
 bash Train_our_model.sh
+```
 
 ### To resume training:
 
+```bash
 bash resume_training_from_best.sh
+```
 
 ### Inference
 
+```bash
 python train_with_dynamic_replica.py
+```
