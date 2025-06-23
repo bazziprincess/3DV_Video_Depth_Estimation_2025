@@ -4,7 +4,7 @@
   <a href="#"><img src="https://img.shields.io/badge/Paper-ComingSoon-lightgrey" alt="Paper PDF"></a>
   <a href="https://github.com/yixin-zhou/3DV_Video_Depth_Estimation_2025"><img src="https://img.shields.io/badge/Code-GitHub-green" alt="GitHub Code"></a>
   <a href="https://bazziprincess.github.io/3DV_Video_Depth_Estimation_2025/"><img src="https://img.shields.io/badge/Project_Page-Live-blue" alt="Project Page"></a>
-  <a href="https://docs.google.com/presentation/d/e/2PACX-1vSpqnjFj72oaubtUzlmMZMxKtOtmZ8zasNSsMiVIkfq71dh14kQmlivHQIKifhmGQ/pub?start=false&loop=false&delayms=3000"><img src="https://img.shields.io/badge/Poster-GoogleSlides-orange" alt="Poster"></a>
+  <a href="https://drive.google.com/file/d/1bQj5nzu0udYlUbuWDGPCmjOIJWrI9yXo/view?usp=sharing"><img src="https://img.shields.io/badge/Poster-GoogleSlides-orange" alt="Poster"></a>
 
   <br><br>
   <strong>Qinrui Deng, Tong Su, Hepeng Fan, Yixin Zhou</strong><br>
@@ -26,12 +26,26 @@ Depth estimation has long been a fundamental problem in computer vision, with nu
 
 ## Quick Start
 
+
+### Dataset
+
+You can use the following scripts to automatically download and extract datasets:
+
+```bash
+# Download Sintel dataset
+python scripts/download_sintel.py
+
+# Download KITTI Depth dataset
+python scripts/download_kitti_depth.py
+
+# Download Virtual KITTI2 dataset
+python scripts/download_virtual_kitti2.py
 ###  Setup
 
 ```bash
 git clone https://github.com/yixin-zhou/3DV_Video_Depth_Estimation_2025.git
 cd 3DV_Video_Depth_Estimation_2025
-conda create -n vde python=3.8
+conda create -n vde python=3.10
 conda activate vde
 pip install -r requirements.txt
 ```
@@ -50,6 +64,15 @@ bash resume_training_from_best.sh
 
 ### Inference
 
-```bash
+To evaluate the model on different benchmarks, run one of the following:
 
+```bash
+# For KITTI Depth
+python evaluation/evaluate_kitti_depth.py
+
+# For Sintel
+python evaluation/evaluate_sintel.py
+
+# For Virtual KITTI2
+python evaluation/evaluate_virtual_kitti2.py
 ```
